@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  pokedex_prod:
+    container_name: pokedex-production
+    image: pokedex-production
+    restart: always
+networks:
+  default:
+    name: caddy_net
+    external: true
