@@ -23,13 +23,13 @@ jobs:
             if [[ "${{ github.ref_name }}" == "main" ]]; then
               cd project/pokedex/develop/pokedex
               git pull origin main
-              docker build -t owlchemist-client .
+              docker build -t pokedex-development .
               docker compose down
               docker compose up -d
             elif [[ "${{ github.ref_name }}" == "production" ]]; then
               cd project/pokedex/production/pokedex
               git pull origin production
-              docker build -t owlchemist-client-production .
+              docker build -t pokedex-production .
               docker compose -f docker-compose.prod.yml down
               docker compose -f docker-compose.prod.yml up -d
             fi
