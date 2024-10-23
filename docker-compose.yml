@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  pokedex_dev:
+    container_name: pokedex-development
+    image: pokedex-development
+    restart: always
+networks:
+  default:
+    name: caddy_net
+    external: true
