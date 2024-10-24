@@ -1,11 +1,12 @@
 import { useEffect, useReducer } from "react";
 import useFetch from "./useFetch";
 
-interface IReducerTemplate {
+interface IReducerTemplate<T> {
   url: string;
   fetchOnLoad?: boolean;
   limit?: number;
   offset?: number;
+  paginatedDataHandler?: (args: T) => T;
 }
 
 export interface IReducerInit<D> {
@@ -20,7 +21,8 @@ const useFetchQuery = <D,>({
   fetchOnLoad = false,
   limit = 25,
   offset = 0,
-}: IReducerTemplate) => {
+  paginatedDataHandler,
+}: IReducerTemplate<D>) => {
   const { fetchData, isLoading } = useFetch(url);
 
   const initReducer: IReducerInit<D> = {
@@ -45,8 +47,11 @@ const useFetchQuery = <D,>({
     const fetch = async () => {
       const url = `?limit=${state.limit}&offset=${state.offset}`;
       const { data = [] } = await fetchData(url);
+
+      const tempData = paginatedDataHandler ? paginatedDataHandler(data) : data;
+
       dispatch({
-        data,
+        data: tempData,
         isFetching: false,
       });
     };

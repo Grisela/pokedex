@@ -1,5 +1,7 @@
+import ListComponent from "../Pokemon/List";
+
 const HomeComponent = () => {
-  return <div>HomeComponent</div>;
+  return <ListComponent />;
 };
 
 export default HomeComponent;

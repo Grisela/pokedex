@@ -2,15 +2,17 @@ import { Card, Center, Image, Text } from "@mantine/core";
 
 interface IProps {
   name: string;
-  sprite_img: string;
+  sprite_img?: string;
 }
 
 const CardViewComponent = (props: IProps) => {
-  const { name, sprite_img } = props;
+  const { name, sprite_img = "/pokeball.png" } = props;
   return (
     <Card shadow="sm" padding="xl" component="a" target="_blank">
       <Card.Section>
-        <Image src={sprite_img} h={160} alt="No way!" />
+        <Center>
+          <Image src={sprite_img} h={100} w={100} alt="No way!" />
+        </Center>
       </Card.Section>
 
       <Center>
