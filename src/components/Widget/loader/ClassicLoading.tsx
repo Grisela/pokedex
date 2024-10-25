@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./classicloader.module.css";
 
 const ClassicLoading = () => {
