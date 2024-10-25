@@ -4,6 +4,8 @@ services:
   pokedex_dev:
     container_name: pokedex-development
     image: pokedex-development
+    env_file:
+      - ./.env
     restart: always
 networks:
   default:
