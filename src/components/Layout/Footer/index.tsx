@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 
 const FooterComponent = () => {
   return (
-    <Center h={20} mb={20}>
+    <Center h={20} mt={50} mb={20}>
       <Flex direction={"column"} align={"center"}>
         <Text size="xs" c={"blue"}>
           v.{APP_VERSION}
