@@ -6,6 +6,12 @@ COPY package*.json ./
 
 RUN npm install --frozen-lockfile
 
+RUN npm i -g serve
+
 COPY . .
 
+EXPOSE 3000
+
 RUN npm run build
+
+CMD [ "serve", "-s", "dist" ]
