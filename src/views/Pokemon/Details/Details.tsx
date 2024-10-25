@@ -19,6 +19,7 @@ import PokemonSprites from "./PokemonSprites";
 import FooterComponent from "@/components/Layout/Footer";
 import PokemonSpritesShowdown from "./PokemonSpritesShowdown";
 import { useState } from "react";
+import ClassicLoading from "@/components/Widget/loader/ClassicLoading";
 
 const PokemonDetails = () => {
   const param = useParams();
@@ -33,7 +34,11 @@ const PokemonDetails = () => {
   });
 
   if (state.isFetching) {
-    return <>Loading...</>;
+    return (
+      <Center mih={"100vh"}>
+        <ClassicLoading />
+      </Center>
+    );
   }
 
   return (

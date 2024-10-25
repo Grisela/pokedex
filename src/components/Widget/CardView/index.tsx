@@ -8,17 +8,16 @@ interface IProps {
 const CardViewComponent = (props: IProps) => {
   const { name, sprite_img = "/pokeball.png" } = props;
   return (
-    <Card
-      shadow="sm"
-      padding="xl"
-      component="a"
-      target="_blank"
-      h={200}
-      w={250}
-    >
+    <Card shadow="sm" padding="sm" h={200} w={"100%"}>
       <Card.Section>
-        <Center>
-          <Image src={sprite_img} h={100} w={100} alt="No way!" />
+        <Center mt={"sm"}>
+          <Image
+            src={sprite_img}
+            h={100}
+            w={100}
+            alt="No way!"
+            fallbackSrc="/pokeball.png"
+          />
         </Center>
       </Card.Section>
 

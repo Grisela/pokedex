@@ -1,7 +1,16 @@
 import { IReducerInit } from "@/hooks/query/useFetchQuery";
 import pokeHeight from "@/utils/pokeHeight";
 import pokeWeight from "@/utils/pokeWeight";
-import { Badge, Box, Button, Card, Flex, Grid, Space } from "@mantine/core";
+import {
+  Badge,
+  Box,
+  Button,
+  Card,
+  Flex,
+  Grid,
+  Space,
+  Text,
+} from "@mantine/core";
 import { IconVolume } from "@tabler/icons-react";
 import {
   IDetailsQueryResponse,
@@ -68,7 +77,9 @@ const BasicInfo = (props: IProps<IDetailsQueryResponse>) => {
         <Grid.Col span={{ base: 12, md: 12, lg: 7, xl: 7 }}>
           <Box>
             <Grid>
-              <Grid.Col span={4}>Types</Grid.Col>
+              <Grid.Col span={4}>
+                <Text fw={"bold"}>Types</Text>
+              </Grid.Col>
               <Grid.Col span={8}>
                 <Flex>
                   {state.data?.types.map((e, idx) => PokemonTypeBadge(e, idx))}
@@ -76,23 +87,31 @@ const BasicInfo = (props: IProps<IDetailsQueryResponse>) => {
               </Grid.Col>
             </Grid>
             <Grid>
-              <Grid.Col span={4}>Base Experience</Grid.Col>
+              <Grid.Col span={4}>
+                <Text fw={"bold"}>Base Experience</Text>
+              </Grid.Col>
               <Grid.Col span={8}>{state.data?.base_experience}</Grid.Col>
             </Grid>
             <Grid>
-              <Grid.Col span={4}>Height</Grid.Col>
+              <Grid.Col span={4}>
+                <Text fw={"bold"}>Height</Text>
+              </Grid.Col>
               <Grid.Col span={8}>
                 {pokeHeight(state.data?.height || 0)}
               </Grid.Col>
             </Grid>
             <Grid>
-              <Grid.Col span={4}>Weight</Grid.Col>
+              <Grid.Col span={4}>
+                <Text fw={"bold"}>Weight</Text>
+              </Grid.Col>
               <Grid.Col span={8}>
                 {pokeWeight(state.data?.weight || 0)}
               </Grid.Col>
             </Grid>
             <Grid>
-              <Grid.Col span={4}>Abilities</Grid.Col>
+              <Grid.Col span={4}>
+                <Text fw={"bold"}>Abilities</Text>
+              </Grid.Col>
               <Grid.Col span={8}>
                 <Flex>
                   {state.data?.abilities.map((e, idx) =>
@@ -102,7 +121,9 @@ const BasicInfo = (props: IProps<IDetailsQueryResponse>) => {
               </Grid.Col>
             </Grid>
             <Grid>
-              <Grid.Col span={4}>Game Version</Grid.Col>
+              <Grid.Col span={4}>
+                <Text fw={"bold"}>Game Version</Text>
+              </Grid.Col>
               <Grid.Col span={8}>
                 <Flex wrap={"wrap"}>
                   {state.data?.game_indices.map((e, idx) => (
@@ -114,7 +135,9 @@ const BasicInfo = (props: IProps<IDetailsQueryResponse>) => {
               </Grid.Col>
             </Grid>
             <Grid>
-              <Grid.Col span={4}>Cries</Grid.Col>
+              <Grid.Col span={4}>
+                <Text fw={"bold"}>Cries</Text>
+              </Grid.Col>
               <Grid.Col span={8}>
                 <Flex>
                   <Button

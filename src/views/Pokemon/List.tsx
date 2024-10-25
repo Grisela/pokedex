@@ -82,7 +82,9 @@ const ListComponent = () => {
         <Box w={250} h={250}>
           <Image src={"/pikadance.gif"} w={"100%"} h={"100%"} alt="pikadance" />
         </Box>
-        <Title fz={"8em"}>Pokedex</Title>
+        <Title fz={"10vw"} c={"yellow"}>
+          Pokedex
+        </Title>
         <Space h={50} />
         <PokemonTypeList />
       </Center>
@@ -90,15 +92,15 @@ const ListComponent = () => {
         mt={50}
         type="container"
         breakpoints={{
-          xs: "100px",
-          sm: "200px",
-          md: "300px",
+          xs: "300px",
+          sm: "400px",
+          md: "400px",
           lg: "600px",
           xl: "800px",
         }}
       >
-        {isEmpty(statePokemonList.data) ? (
-          <Center h={"100vh"}>No Post Yet!</Center>
+        {isEmpty(statePokemonList.data) && !statePokemonList.isFetching ? (
+          <Center h={"50vh"}>No Post Yet!</Center>
         ) : (
           statePokemonList.data?.map((e, idx: number) => {
             return (
