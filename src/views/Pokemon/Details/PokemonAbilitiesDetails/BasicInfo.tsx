@@ -35,12 +35,20 @@ const BasicInfo = (props: IProps) => {
         >
           <Grid.Col span={12}>
             <Grid>
-              <Grid.Col span={2}>Generation</Grid.Col>
-              <Grid.Col span={10}>{state.data?.generation.name}</Grid.Col>
+              <Grid.Col span={{ base: 4, md: 2, lg: 2, xl: 2 }}>
+                Generation
+              </Grid.Col>
+              <Grid.Col span={{ base: 8, md: 10, lg: 10, xl: 10 }}>
+                {state.data?.generation.name}
+              </Grid.Col>
             </Grid>
             <Grid>
-              <Grid.Col span={2}>Description</Grid.Col>
-              <Grid.Col span={10}>{AbilitiesDescription()}</Grid.Col>
+              <Grid.Col span={{ base: 4, md: 2, lg: 2, xl: 2 }}>
+                Description
+              </Grid.Col>
+              <Grid.Col span={{ base: 8, md: 10, lg: 10, xl: 10 }}>
+                {AbilitiesDescription()}
+              </Grid.Col>
             </Grid>
           </Grid.Col>
         </Grid>
