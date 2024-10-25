@@ -1,0 +1,35 @@
+name: Build and Deploy owlchemist-client
+
+on:
+  push:
+    branches:
+      - main
+      - production
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+      - name: SSH into server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          passphrase:
+          port: 22
+          script: |
+            if [[ "${{ github.ref_name }}" == "main" ]]; then
+              cd project/pokedex/develop/pokedex
+              git pull origin main
+              docker build -t pokedex-development .
+              docker compose down
+              docker compose up -d
+            elif [[ "${{ github.ref_name }}" == "production" ]]; then
+              cd project/pokedex/production/pokedex
+              git pull origin production
+              docker build -t pokedex-production .
+              docker compose -f docker-compose.prod.yml down
+              docker compose -f docker-compose.prod.yml up -d
+            fi
