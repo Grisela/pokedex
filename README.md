@@ -42,10 +42,12 @@ This project requires a `.env` file in the root directory. Create a `.env` file 
 ```env
 VITE_APP_VERSION=your_app_version
 VITE_BASE_URL=pokeapi_url
+VITE_BASE_GRAPHQL_URL=pokegraphql_url
 ```
 
 - `VITE_APP_VERSION`: The current version of the app.
 - `VITE_BASE_URL`: The base [URL](https://pokeapi.co/) for API
+- `VITE_BASE_GRAPHQL_URL`: The base [URL](https://beta.pokeapi.co/graphql/console/) for graphql
 
 ## Available Scripts
 
