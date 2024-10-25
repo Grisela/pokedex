@@ -3,28 +3,57 @@ import pokeHeight from "@/utils/pokeHeight";
 import pokeWeight from "@/utils/pokeWeight";
 import { Badge, Box, Button, Card, Flex, Grid, Space } from "@mantine/core";
 import { IconVolume } from "@tabler/icons-react";
-import { IDetailsQueryResponse } from "./types";
+import {
+  IDetailsQueryResponse,
+  IPokemonAbilities,
+  IPokemonTypes,
+} from "./types";
 import PokemonStats from "./PokemonStats";
+import extractIdFromUrl from "@/utils/extractIdFromUrl";
+import { useNavigate } from "react-router-dom";
 
 export interface IProps<D> {
   state: IReducerInit<D>;
 }
 
 const BasicInfo = (props: IProps<IDetailsQueryResponse>) => {
+  const navigate = useNavigate();
+
   const { state } = props;
 
   const handlePlayCries = (url: string) => {
     const cry = new Audio(url);
     cry.play();
   };
-  return (
-    <Card
-      shadow="sm"
-      padding="xl"
-      component="a"
-      href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-      target="_blank"
+
+  const PokemonTypeBadge = (e: IPokemonTypes, idx: number) => (
+    <Badge
+      size="sm"
+      mr={5}
+      key={idx}
+      onClick={() => {
+        navigate(`/pokemon-type-details/${extractIdFromUrl(e.type.url)}`);
+      }}
     >
+      {e.type.name}
+    </Badge>
+  );
+
+  const PokemonAbilitiesBadge = (e: IPokemonAbilities, idx: number) => (
+    <Badge
+      size="sm"
+      mr={5}
+      key={idx}
+      onClick={() => {
+        navigate(`/pokemon-ability-details/${extractIdFromUrl(e.ability.url)}`);
+      }}
+    >
+      {e.ability.name}
+    </Badge>
+  );
+
+  return (
+    <Card shadow="sm" padding="xl" component="a" target="_blank">
       <Grid
         breakpoints={{
           xs: "100px",
@@ -42,11 +71,7 @@ const BasicInfo = (props: IProps<IDetailsQueryResponse>) => {
               <Grid.Col span={4}>Types</Grid.Col>
               <Grid.Col span={8}>
                 <Flex>
-                  {state.data?.types.map((e, idx) => (
-                    <Badge size="sm" mr={5} key={idx}>
-                      {e.type.name}
-                    </Badge>
-                  ))}
+                  {state.data?.types.map((e, idx) => PokemonTypeBadge(e, idx))}
                 </Flex>
               </Grid.Col>
             </Grid>
@@ -70,11 +95,9 @@ const BasicInfo = (props: IProps<IDetailsQueryResponse>) => {
               <Grid.Col span={4}>Abilities</Grid.Col>
               <Grid.Col span={8}>
                 <Flex>
-                  {state.data?.abilities.map((e, idx) => (
-                    <Badge size="sm" mr={5} key={idx}>
-                      {e.ability.name}
-                    </Badge>
-                  ))}
+                  {state.data?.abilities.map((e, idx) =>
+                    PokemonAbilitiesBadge(e, idx)
+                  )}
                 </Flex>
               </Grid.Col>
             </Grid>

@@ -1,12 +1,13 @@
 import CardViewComponent from "@/components/Widget/CardView";
 import { url } from "@/constant/urls";
 import useFetchQuery from "@/hooks/query/useFetchQuery";
-import { Box, Center, Grid, Image, Loader, Title } from "@mantine/core";
+import { Box, Center, Grid, Image, Loader, Space, Title } from "@mantine/core";
 import { IPokemonListQuery, IPokemonListQueryResult } from "./types";
 import { isEmpty, uniqBy } from "lodash";
 import { useEffect } from "react";
 import useIsBottomScroll from "@/hooks/general/useIsBottomScroll";
 import { useNavigate } from "react-router-dom";
+import PokemonTypeList from "./PokemonTypeList";
 
 const DEFAULT_POKEMON_LIMIT = 60;
 
@@ -51,6 +52,8 @@ const ListComponent = () => {
           <Image src={"/pikadance.gif"} w={"100%"} h={"100%"} alt="pikadance" />
         </Box>
         <Title fz={"8em"}>Pokedex</Title>
+        <Space h={50} />
+        <PokemonTypeList />
       </Center>
       <Grid
         mt={50}

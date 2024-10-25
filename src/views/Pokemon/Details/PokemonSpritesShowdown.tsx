@@ -6,50 +6,50 @@ export interface IProps<D> {
   state: IReducerInit<D>;
 }
 
-const PokemonSprites = (props: IProps<IDetailsQueryResponse>) => {
+const PokemonSpritesShowdown = (props: IProps<IDetailsQueryResponse>) => {
   const { state } = props;
   return (
     <>
-      <Title order={2}>Pokemon Sprites</Title>
+      <Title order={2}>Pokemon Showdown</Title>
       <Space h={20} />
       <Card shadow="sm" padding="xl" component="a" target="_blank">
         <Box>
           <Box>
             <Flex wrap={"wrap"} justify={"center"}>
-              {state.data?.sprites.front_default && (
+              {state.data?.sprites.other.showdown.front_default && (
                 <Box w={200} h={150}>
                   <Image
-                    src={state.data?.sprites.front_default}
+                    src={state.data?.sprites.other.showdown.front_default}
                     w={"100%"}
                     h={"100%"}
                   />
                   <Text style={{ textAlign: "center" }}>Front Default</Text>
                 </Box>
               )}
-              {state.data?.sprites.back_default && (
+              {state.data?.sprites.other.showdown.back_default && (
                 <Box w={200} h={150}>
                   <Image
-                    src={state.data?.sprites.back_default}
+                    src={state.data?.sprites.other.showdown.back_default}
                     w={"100%"}
                     h={"100%"}
                   />
                   <Text style={{ textAlign: "center" }}>Back Default</Text>
                 </Box>
               )}
-              {state.data?.sprites.front_shiny && (
+              {state.data?.sprites.other.showdown.front_shiny && (
                 <Box w={200} h={150}>
                   <Image
-                    src={state.data?.sprites.front_shiny}
+                    src={state.data?.sprites.other.showdown.front_shiny}
                     w={"100%"}
                     h={"100%"}
                   />
                   <Text style={{ textAlign: "center" }}>Front Shiny</Text>
                 </Box>
               )}
-              {state.data?.sprites.back_shiny && (
+              {state.data?.sprites.other.showdown.back_shiny && (
                 <Box w={200} h={150}>
                   <Image
-                    src={state.data?.sprites.back_shiny}
+                    src={state.data?.sprites.other.showdown.back_shiny}
                     w={"100%"}
                     h={"100%"}
                   />
@@ -64,4 +64,4 @@ const PokemonSprites = (props: IProps<IDetailsQueryResponse>) => {
   );
 };
 
-export default PokemonSprites;
+export default PokemonSpritesShowdown;
