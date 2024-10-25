@@ -1,50 +1,91 @@
-# React + TypeScript + Vite
+# Pokedex App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A Pokedex application built with React, Vite, and TypeScript.
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Pokedex App](#pokedex-app)
+  - [Table of Contents](#table-of-contents)
+  - [Demo](#demo)
+  - [Project Setup](#project-setup)
+  - [Environment Variables](#environment-variables)
+  - [Available Scripts](#available-scripts)
+  - [Development](#development)
+  - [Building for Production](#building-for-production)
+  - [Previewing Production Build](#previewing-production-build)
+  - [License](#license)
 
-## Expanding the ESLint configuration
+## Demo
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Development Environment**: [https://dev-pokedex.owlchemist.quest/](https://dev-pokedex.owlchemist.quest/)
+- **Production Environment**: [https://pokedex.owlchemist.quest/](https://pokedex.owlchemist.quest/)
 
-- Configure the top-level `parserOptions` property like this:
+## Project Setup
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+1. Clone the repository:
+
+   ```bash
+   git clone git@github.com:Grisela/pokedex.git
+   cd pokedex
+   ```
+
+2. Install the dependencies:
+
+   ```bash
+   npm i
+   ```
+
+## Environment Variables
+
+This project requires a `.env` file in the root directory. Create a `.env` file with the following variables:
+
+```env
+VITE_APP_VERSION=your_app_version
+VITE_BASE_URL=pokeapi_url
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- `VITE_APP_VERSION`: The current version of the app.
+- `VITE_BASE_URL`: The base [URL](https://pokeapi.co/) for API
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Available Scripts
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+In the project directory, you can run:
+
+- **`npm run dev`**: Runs the app in development mode using Vite.
+- **`npm run build`**: Builds the app for production to the `dist` folder.
+- **`npm run lint`**: Lints the codebase using ESLint.
+- **`npm run preview`**: Previews the production build locally.
+
+## Development
+
+To start the development server, run:
+
+```bash
+npm run dev
 ```
+
+This will start the Vite development server, and you can access the app at [http://localhost:3000](http://localhost:3000).
+
+## Building for Production
+
+To build the app for production, run:
+
+```bash
+npm run build
+```
+
+This will output a static production build to the `dist` folder.
+
+## Previewing Production Build
+
+To preview the production build locally after running the build, run:
+
+```bash
+npm run preview
+```
+
+This will start a local server at [http://localhost:4173](http://localhost:4173) to serve the production build.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
