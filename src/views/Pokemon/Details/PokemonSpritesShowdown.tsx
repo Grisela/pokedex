@@ -17,7 +17,7 @@ const PokemonSpritesShowdown = (props: IProps<IDetailsQueryResponse>) => {
           <Box>
             <Flex wrap={"wrap"} justify={"space-around"}>
               {state.data?.sprites.other.showdown.front_default && (
-                <Box w={150} h={150}>
+                <Box w={150} h={150} mb={50}>
                   <Image
                     src={state.data?.sprites.other.showdown.front_default}
                     h={"100%"}
@@ -28,7 +28,7 @@ const PokemonSpritesShowdown = (props: IProps<IDetailsQueryResponse>) => {
                 </Box>
               )}
               {state.data?.sprites.other.showdown.back_default && (
-                <Box w={150} h={150}>
+                <Box w={150} h={150} mb={50}>
                   <Image
                     src={state.data?.sprites.other.showdown.back_default}
                     h={"100%"}
@@ -39,7 +39,7 @@ const PokemonSpritesShowdown = (props: IProps<IDetailsQueryResponse>) => {
                 </Box>
               )}
               {state.data?.sprites.other.showdown.front_shiny && (
-                <Box w={150} h={150}>
+                <Box w={150} h={150} mb={50}>
                   <Image
                     src={state.data?.sprites.other.showdown.front_shiny}
                     h={"100%"}
@@ -50,7 +50,7 @@ const PokemonSpritesShowdown = (props: IProps<IDetailsQueryResponse>) => {
                 </Box>
               )}
               {state.data?.sprites.other.showdown.back_shiny && (
-                <Box w={150} h={150}>
+                <Box w={150} h={150} mb={50}>
                   <Image
                     src={state.data?.sprites.other.showdown.back_shiny}
                     h={"100%"}
