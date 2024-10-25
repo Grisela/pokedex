@@ -1,6 +1,6 @@
 import { url } from "@/constant/urls";
 import useFetchQueryById from "@/hooks/query/useFetchQueryById";
-import { Container, Space, Title, Text } from "@mantine/core";
+import { Container, Space, Title, Text, Center } from "@mantine/core";
 import { upperFirst } from "lodash";
 import { useParams } from "react-router-dom";
 import { IPokemonAbilitiesQuery } from "./types";
@@ -8,6 +8,7 @@ import HeaderComponent from "@/components/Layout/Header";
 import FooterComponent from "@/components/Layout/Footer";
 import BasicInfo from "./BasicInfo";
 import RelatedPokemonAbilitiesList from "./RelatedPokemonAbilitiesList";
+import ClassicLoading from "@/components/Widget/loader/ClassicLoading";
 
 const Details = () => {
   const param = useParams();
@@ -31,7 +32,11 @@ const Details = () => {
   };
 
   if (state.isFetching) {
-    return <>Loading...</>;
+    return (
+      <Center mih={"100vh"}>
+        <ClassicLoading />
+      </Center>
+    );
   }
 
   return (

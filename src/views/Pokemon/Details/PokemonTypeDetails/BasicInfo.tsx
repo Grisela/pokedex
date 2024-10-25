@@ -44,17 +44,23 @@ const BasicInfo = (props: IProps) => {
         >
           <Grid.Col span={{ base: 12, md: 12, lg: 5, xl: 5 }}>
             <Grid>
-              <Grid.Col span={6}>Generation</Grid.Col>
+              <Grid.Col span={6}>
+                <Text fw={"bold"}>Generation</Text>
+              </Grid.Col>
               <Grid.Col span={6}>{state.data?.generation.name}</Grid.Col>
             </Grid>
             <Grid>
-              <Grid.Col span={6}>Move Damage Class</Grid.Col>
+              <Grid.Col span={6}>
+                <Text fw={"bold"}>Move Damage Class</Text>
+              </Grid.Col>
               <Grid.Col span={6}>{state.data?.move_damage_class.name}</Grid.Col>
             </Grid>
           </Grid.Col>
           <Grid.Col span={{ base: 12, md: 12, lg: 7, xl: 7 }}>
             <Grid>
-              <Grid.Col span={5}>Double Damage From</Grid.Col>
+              <Grid.Col span={5}>
+                <Text fw={"bold"}>Double Damage From</Text>
+              </Grid.Col>
               <Grid.Col span={7}>
                 {isEmpty(state.data?.damage_relations.double_damage_from)
                   ? NoneComponent
@@ -64,7 +70,9 @@ const BasicInfo = (props: IProps) => {
               </Grid.Col>
             </Grid>
             <Grid>
-              <Grid.Col span={5}>Double Damage To</Grid.Col>
+              <Grid.Col span={5}>
+                <Text fw={"bold"}>Double Damage To</Text>
+              </Grid.Col>
               <Grid.Col span={7}>
                 {isEmpty(state.data?.damage_relations.double_damage_to)
                   ? NoneComponent
@@ -74,7 +82,9 @@ const BasicInfo = (props: IProps) => {
               </Grid.Col>
             </Grid>
             <Grid>
-              <Grid.Col span={5}>Half Damage From</Grid.Col>
+              <Grid.Col span={5}>
+                <Text fw={"bold"}>Half Damage From</Text>
+              </Grid.Col>
               <Grid.Col span={7}>
                 {isEmpty(state.data?.damage_relations.half_damage_from)
                   ? NoneComponent
@@ -84,7 +94,9 @@ const BasicInfo = (props: IProps) => {
               </Grid.Col>
             </Grid>
             <Grid>
-              <Grid.Col span={5}>Half Damage From</Grid.Col>
+              <Grid.Col span={5}>
+                <Text fw={"bold"}>Half Damage From</Text>
+              </Grid.Col>
               <Grid.Col span={7}>
                 {isEmpty(state.data?.damage_relations.half_damage_to)
                   ? NoneComponent
@@ -94,7 +106,9 @@ const BasicInfo = (props: IProps) => {
               </Grid.Col>
             </Grid>
             <Grid>
-              <Grid.Col span={5}>No Damage From</Grid.Col>
+              <Grid.Col span={5}>
+                <Text fw={"bold"}>No Damage From</Text>
+              </Grid.Col>
               <Grid.Col span={7}>
                 {isEmpty(state.data?.damage_relations.no_damage_from)
                   ? NoneComponent
@@ -104,7 +118,9 @@ const BasicInfo = (props: IProps) => {
               </Grid.Col>
             </Grid>
             <Grid>
-              <Grid.Col span={5}>No Damage To</Grid.Col>
+              <Grid.Col span={5}>
+                <Text fw={"bold"}>No Damage To</Text>
+              </Grid.Col>
               <Grid.Col span={7}>
                 {isEmpty(state.data?.damage_relations.no_damage_to)
                   ? NoneComponent
