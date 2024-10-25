@@ -12,48 +12,52 @@ const PokemonSpritesShowdown = (props: IProps<IDetailsQueryResponse>) => {
     <>
       <Title order={2}>Pokemon Showdown</Title>
       <Space h={20} />
-      <Card shadow="sm" padding="xl" component="a" target="_blank">
-        <Box>
+      <Card shadow="sm" padding="xl">
+        <Box p={20}>
           <Box>
-            <Flex wrap={"wrap"} justify={"center"}>
+            <Flex wrap={"wrap"} justify={"space-around"}>
               {state.data?.sprites.other.showdown.front_default && (
-                <Box w={200} h={150}>
+                <Box w={150} h={150}>
                   <Image
                     src={state.data?.sprites.other.showdown.front_default}
-                    w={"100%"}
                     h={"100%"}
                   />
-                  <Text style={{ textAlign: "center" }}>Front Default</Text>
+                  <Text mt={10} style={{ textAlign: "center" }}>
+                    Front Default
+                  </Text>
                 </Box>
               )}
               {state.data?.sprites.other.showdown.back_default && (
-                <Box w={200} h={150}>
+                <Box w={150} h={150}>
                   <Image
                     src={state.data?.sprites.other.showdown.back_default}
-                    w={"100%"}
                     h={"100%"}
                   />
-                  <Text style={{ textAlign: "center" }}>Back Default</Text>
+                  <Text mt={10} style={{ textAlign: "center" }}>
+                    Back Default
+                  </Text>
                 </Box>
               )}
               {state.data?.sprites.other.showdown.front_shiny && (
-                <Box w={200} h={150}>
+                <Box w={150} h={150}>
                   <Image
                     src={state.data?.sprites.other.showdown.front_shiny}
-                    w={"100%"}
                     h={"100%"}
                   />
-                  <Text style={{ textAlign: "center" }}>Front Shiny</Text>
+                  <Text mt={10} style={{ textAlign: "center" }}>
+                    Front Shiny
+                  </Text>
                 </Box>
               )}
               {state.data?.sprites.other.showdown.back_shiny && (
-                <Box w={200} h={150}>
+                <Box w={150} h={150}>
                   <Image
                     src={state.data?.sprites.other.showdown.back_shiny}
-                    w={"100%"}
                     h={"100%"}
                   />
-                  <Text style={{ textAlign: "center" }}>Back Shiny</Text>
+                  <Text mt={10} style={{ textAlign: "center" }}>
+                    Back Shiny
+                  </Text>
                 </Box>
               )}
             </Flex>

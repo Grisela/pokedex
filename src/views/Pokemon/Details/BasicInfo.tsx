@@ -1,7 +1,16 @@
 import { IReducerInit } from "@/hooks/query/useFetchQuery";
 import pokeHeight from "@/utils/pokeHeight";
 import pokeWeight from "@/utils/pokeWeight";
-import { Badge, Box, Button, Card, Flex, Grid, Space } from "@mantine/core";
+import {
+  Badge,
+  Box,
+  Button,
+  Card,
+  Flex,
+  Grid,
+  Space,
+  Text,
+} from "@mantine/core";
 import { IconVolume } from "@tabler/icons-react";
 import {
   IDetailsQueryResponse,
@@ -11,6 +20,7 @@ import {
 import PokemonStats from "./PokemonStats";
 import extractIdFromUrl from "@/utils/extractIdFromUrl";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export interface IProps<D> {
   state: IReducerInit<D>;
@@ -27,29 +37,45 @@ const BasicInfo = (props: IProps<IDetailsQueryResponse>) => {
   };
 
   const PokemonTypeBadge = (e: IPokemonTypes, idx: number) => (
-    <Badge
-      size="sm"
-      mr={5}
+    <motion.div
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
       key={idx}
-      onClick={() => {
-        navigate(`/pokemon-type-details/${extractIdFromUrl(e.type.url)}`);
-      }}
+      style={{ display: "inline-flex" }}
     >
-      {e.type.name}
-    </Badge>
+      <Badge
+        size="sm"
+        mr={5}
+        onClick={() => {
+          navigate(`/pokemon-type-details/${extractIdFromUrl(e.type.url)}`);
+        }}
+        style={{ cursor: "pointer" }}
+      >
+        {e.type.name}
+      </Badge>
+    </motion.div>
   );
 
   const PokemonAbilitiesBadge = (e: IPokemonAbilities, idx: number) => (
-    <Badge
-      size="sm"
-      mr={5}
+    <motion.div
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
       key={idx}
-      onClick={() => {
-        navigate(`/pokemon-ability-details/${extractIdFromUrl(e.ability.url)}`);
-      }}
+      style={{ display: "inline-flex" }}
     >
-      {e.ability.name}
-    </Badge>
+      <Badge
+        size="sm"
+        mr={5}
+        onClick={() => {
+          navigate(
+            `/pokemon-ability-details/${extractIdFromUrl(e.ability.url)}`
+          );
+        }}
+        style={{ cursor: "pointer" }}
+      >
+        {e.ability.name}
+      </Badge>
+    </motion.div>
   );
 
   return (
@@ -68,7 +94,9 @@ const BasicInfo = (props: IProps<IDetailsQueryResponse>) => {
         <Grid.Col span={{ base: 12, md: 12, lg: 7, xl: 7 }}>
           <Box>
             <Grid>
-              <Grid.Col span={4}>Types</Grid.Col>
+              <Grid.Col span={4}>
+                <Text fw={"bold"}>Types</Text>
+              </Grid.Col>
               <Grid.Col span={8}>
                 <Flex>
                   {state.data?.types.map((e, idx) => PokemonTypeBadge(e, idx))}
@@ -76,23 +104,31 @@ const BasicInfo = (props: IProps<IDetailsQueryResponse>) => {
               </Grid.Col>
             </Grid>
             <Grid>
-              <Grid.Col span={4}>Base Experience</Grid.Col>
+              <Grid.Col span={4}>
+                <Text fw={"bold"}>Base Experience</Text>
+              </Grid.Col>
               <Grid.Col span={8}>{state.data?.base_experience}</Grid.Col>
             </Grid>
             <Grid>
-              <Grid.Col span={4}>Height</Grid.Col>
+              <Grid.Col span={4}>
+                <Text fw={"bold"}>Height</Text>
+              </Grid.Col>
               <Grid.Col span={8}>
                 {pokeHeight(state.data?.height || 0)}
               </Grid.Col>
             </Grid>
             <Grid>
-              <Grid.Col span={4}>Weight</Grid.Col>
+              <Grid.Col span={4}>
+                <Text fw={"bold"}>Weight</Text>
+              </Grid.Col>
               <Grid.Col span={8}>
                 {pokeWeight(state.data?.weight || 0)}
               </Grid.Col>
             </Grid>
             <Grid>
-              <Grid.Col span={4}>Abilities</Grid.Col>
+              <Grid.Col span={4}>
+                <Text fw={"bold"}>Abilities</Text>
+              </Grid.Col>
               <Grid.Col span={8}>
                 <Flex>
                   {state.data?.abilities.map((e, idx) =>
@@ -102,7 +138,9 @@ const BasicInfo = (props: IProps<IDetailsQueryResponse>) => {
               </Grid.Col>
             </Grid>
             <Grid>
-              <Grid.Col span={4}>Game Version</Grid.Col>
+              <Grid.Col span={4}>
+                <Text fw={"bold"}>Game Version</Text>
+              </Grid.Col>
               <Grid.Col span={8}>
                 <Flex wrap={"wrap"}>
                   {state.data?.game_indices.map((e, idx) => (
@@ -114,7 +152,9 @@ const BasicInfo = (props: IProps<IDetailsQueryResponse>) => {
               </Grid.Col>
             </Grid>
             <Grid>
-              <Grid.Col span={4}>Cries</Grid.Col>
+              <Grid.Col span={4}>
+                <Text fw={"bold"}>Cries</Text>
+              </Grid.Col>
               <Grid.Col span={8}>
                 <Flex>
                   <Button

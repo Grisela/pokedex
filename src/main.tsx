@@ -7,18 +7,21 @@ import RTKWrapper from "./components/Layout/Wrapper/RTKWrapper/index.tsx";
 import GlobalContainer from "./components/Layout/Wrapper/GlobalContainer/index.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import routerCollection from "./router./index.tsx";
+import ApolloGraphqlWrapper from "./components/Layout/Wrapper/ApolloGraphqlWrapper/index.tsx";
 
 const router = createBrowserRouter(routerCollection);
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <RTKWrapper>
-      <MantineWrapper>
-        <GlobalContainer>
-          {/* <App /> */}
-          <RouterProvider router={router} />
-        </GlobalContainer>
-      </MantineWrapper>
-    </RTKWrapper>
+    <ApolloGraphqlWrapper>
+      <RTKWrapper>
+        <MantineWrapper>
+          <GlobalContainer>
+            {/* <App /> */}
+            <RouterProvider router={router} />
+          </GlobalContainer>
+        </MantineWrapper>
+      </RTKWrapper>
+    </ApolloGraphqlWrapper>
   </StrictMode>
 );
