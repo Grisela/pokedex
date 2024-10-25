@@ -3,15 +3,27 @@ import { url } from "@/constant/urls";
 import { useParams } from "react-router-dom";
 import { IDetailsQueryResponse } from "./types";
 import HeaderComponent from "@/components/Layout/Header";
-import { Box, Container, Space, Image, Title, Center } from "@mantine/core";
+import {
+  Box,
+  Container,
+  Space,
+  Image,
+  Title,
+  Center,
+  Switch,
+} from "@mantine/core";
 import { upperFirst } from "@mantine/hooks";
 import BasicInfo from "./BasicInfo";
 import TableMoves from "./TableMoves";
 import PokemonSprites from "./PokemonSprites";
 import FooterComponent from "@/components/Layout/Footer";
+import PokemonSpritesShowdown from "./PokemonSpritesShowdown";
+import { useState } from "react";
 
 const PokemonDetails = () => {
   const param = useParams();
+
+  const [isDisplayShiny, setIsDisplayShiny] = useState(false);
 
   const { state } = useFetchQueryById<IDetailsQueryResponse>({
     url: url.pokemon_list,
@@ -39,12 +51,23 @@ const PokemonDetails = () => {
         <Center>
           <Box w={300} h={300}>
             <Image
-              src={state.data?.sprites.other["official-artwork"].front_default}
+              src={
+                isDisplayShiny
+                  ? state.data?.sprites.other["official-artwork"].front_shiny
+                  : state.data?.sprites.other["official-artwork"].front_default
+              }
               alt="sprite"
               w={"100%"}
               h={"100%"}
             />
           </Box>
+        </Center>
+        <Center>
+          <Switch
+            label="Shiny"
+            checked={isDisplayShiny}
+            onChange={(event) => setIsDisplayShiny(event.currentTarget.checked)}
+          />
         </Center>
         <Space h={50} />
         <BasicInfo state={state} />
@@ -52,6 +75,8 @@ const PokemonDetails = () => {
         <TableMoves state={state} />
         <Space h={50} />
         <PokemonSprites state={state} />
+        <Space h={50} />
+        <PokemonSpritesShowdown state={state} />
         <FooterComponent />
       </Container>
     </>
