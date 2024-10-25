@@ -4,6 +4,8 @@ services:
   pokedex_prod:
     container_name: pokedex-production
     image: pokedex-production
+    env_file:
+      - ./.env
     restart: always
 networks:
   default:
