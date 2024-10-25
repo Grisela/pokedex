@@ -1,15 +1,17 @@
 import CardViewComponent from "@/components/Widget/CardView";
 import { url } from "@/constant/urls";
 import useFetchQuery from "@/hooks/query/useFetchQuery";
-import { Center, Grid, Image, Loader, Title } from "@mantine/core";
+import { Box, Center, Grid, Image, Loader, Title } from "@mantine/core";
 import { IPokemonListQuery, IPokemonListQueryResult } from "./types";
 import { isEmpty, uniqBy } from "lodash";
 import { useEffect } from "react";
 import useIsBottomScroll from "@/hooks/general/useIsBottomScroll";
+import { useNavigate } from "react-router-dom";
 
 const DEFAULT_POKEMON_LIMIT = 60;
 
 const ListComponent = () => {
+  const navigate = useNavigate();
   const paginatedDataHandler = (data: IPokemonListQuery) => {
     const isPaginated = state.offset !== 0;
     const currentData = state.data?.results || [];
@@ -45,7 +47,9 @@ const ListComponent = () => {
   return (
     <>
       <Center style={{ flexDirection: "column" }}>
-        <Image mb={-80} src={"/pikadance.gif"} w={"40vw"} alt="pikadance" />
+        <Box w={250} h={250}>
+          <Image src={"/pikadance.gif"} w={"100%"} h={"100%"} alt="pikadance" />
+        </Box>
         <Title fz={"8em"}>Pokedex</Title>
       </Center>
       <Grid
@@ -66,7 +70,7 @@ const ListComponent = () => {
             <Grid.Col
               span={{ base: 12, md: 6, lg: 4, xl: 3 }}
               key={idx}
-              onClick={() => console.log(e.name)}
+              onClick={() => navigate(`/pokemon-details/${e.name}`)}
             >
               <CardViewComponent name={e.name} />
             </Grid.Col>
