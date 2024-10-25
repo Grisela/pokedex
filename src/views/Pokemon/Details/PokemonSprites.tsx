@@ -17,7 +17,7 @@ const PokemonSprites = (props: IProps<IDetailsQueryResponse>) => {
           <Box>
             <Flex wrap={"wrap"} justify={"center"}>
               {state.data?.sprites.front_default && (
-                <Box w={200} h={150}>
+                <Box w={150} h={150} mb={50}>
                   <Image
                     src={state.data?.sprites.front_default}
                     w={"100%"}
@@ -27,7 +27,7 @@ const PokemonSprites = (props: IProps<IDetailsQueryResponse>) => {
                 </Box>
               )}
               {state.data?.sprites.back_default && (
-                <Box w={200} h={150}>
+                <Box w={150} h={150} mb={50}>
                   <Image
                     src={state.data?.sprites.back_default}
                     w={"100%"}
@@ -37,7 +37,7 @@ const PokemonSprites = (props: IProps<IDetailsQueryResponse>) => {
                 </Box>
               )}
               {state.data?.sprites.front_shiny && (
-                <Box w={200} h={150}>
+                <Box w={150} h={150} mb={50}>
                   <Image
                     src={state.data?.sprites.front_shiny}
                     w={"100%"}
@@ -47,7 +47,7 @@ const PokemonSprites = (props: IProps<IDetailsQueryResponse>) => {
                 </Box>
               )}
               {state.data?.sprites.back_shiny && (
-                <Box w={200} h={150}>
+                <Box w={150} h={150} mb={50}>
                   <Image
                     src={state.data?.sprites.back_shiny}
                     w={"100%"}
