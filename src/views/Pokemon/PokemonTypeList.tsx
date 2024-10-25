@@ -3,6 +3,7 @@ import useFetchQuery from "@/hooks/query/useFetchQuery";
 import { Badge, Box, Flex, Space, Title } from "@mantine/core";
 import { IPokemonTypeListQuery } from "./types";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const PokemonTypeList = () => {
   const navigate = useNavigate();
@@ -21,14 +22,20 @@ const PokemonTypeList = () => {
         {(state.data?.results || []).map((e, idx) => {
           if (e.name !== "unknown")
             return (
-              <Badge
-                size="lg"
+              <motion.div
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
                 key={idx}
-                m={5}
-                onClick={() => navigate(`/pokemon-type-details/${idx + 1}`)}
               >
-                {e.name}
-              </Badge>
+                <Badge
+                  size="lg"
+                  m={5}
+                  style={{ cursor: "pointer" }}
+                  onClick={() => navigate(`/pokemon-type-details/${idx + 1}`)}
+                >
+                  {e.name}
+                </Badge>
+              </motion.div>
             );
         })}
       </Flex>

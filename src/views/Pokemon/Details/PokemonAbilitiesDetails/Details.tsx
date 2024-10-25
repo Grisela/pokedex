@@ -9,6 +9,7 @@ import FooterComponent from "@/components/Layout/Footer";
 import BasicInfo from "./BasicInfo";
 import RelatedPokemonAbilitiesList from "./RelatedPokemonAbilitiesList";
 import ClassicLoading from "@/components/Widget/loader/ClassicLoading";
+import { motion } from "framer-motion";
 
 const Details = () => {
   const param = useParams();
@@ -41,21 +42,35 @@ const Details = () => {
 
   return (
     <>
-      <HeaderComponent
-        items={[
-          { title: "Home", href: "/" },
-          { title: `${upperFirst(state.data?.name || "")}`, href: "" },
-        ]}
-      />
-      <Container mt={50} size={"lg"}>
-        <Title order={2}>{upperFirst(state.data?.name || "")} Abilities</Title>
-        {AbilitiesShortDescription()}
-        <Space h={30} />
-        <BasicInfo state={state} dispatch={dispatch} />
-        <Space h={30} />
-        <RelatedPokemonAbilitiesList state={state} />
-      </Container>
-      <FooterComponent />
+      <motion.div
+        initial={{ y: "100vh" }}
+        animate={{ y: 0 }}
+        transition={{
+          type: "spring",
+          damping: 20,
+          stiffness: 150,
+          duration: 1,
+          delay: 1,
+        }}
+      >
+        <HeaderComponent
+          items={[
+            { title: "Home", href: "/" },
+            { title: `${upperFirst(state.data?.name || "")}`, href: "" },
+          ]}
+        />
+        <Container mt={50} size={"lg"}>
+          <Title order={2}>
+            {upperFirst(state.data?.name || "")} Abilities
+          </Title>
+          {AbilitiesShortDescription()}
+          <Space h={30} />
+          <BasicInfo state={state} dispatch={dispatch} />
+          <Space h={30} />
+          <RelatedPokemonAbilitiesList state={state} />
+        </Container>
+        <FooterComponent />
+      </motion.div>
     </>
   );
 };

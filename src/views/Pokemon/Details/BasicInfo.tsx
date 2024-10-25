@@ -20,6 +20,7 @@ import {
 import PokemonStats from "./PokemonStats";
 import extractIdFromUrl from "@/utils/extractIdFromUrl";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export interface IProps<D> {
   state: IReducerInit<D>;
@@ -36,29 +37,45 @@ const BasicInfo = (props: IProps<IDetailsQueryResponse>) => {
   };
 
   const PokemonTypeBadge = (e: IPokemonTypes, idx: number) => (
-    <Badge
-      size="sm"
-      mr={5}
+    <motion.div
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
       key={idx}
-      onClick={() => {
-        navigate(`/pokemon-type-details/${extractIdFromUrl(e.type.url)}`);
-      }}
+      style={{ display: "inline-flex" }}
     >
-      {e.type.name}
-    </Badge>
+      <Badge
+        size="sm"
+        mr={5}
+        onClick={() => {
+          navigate(`/pokemon-type-details/${extractIdFromUrl(e.type.url)}`);
+        }}
+        style={{ cursor: "pointer" }}
+      >
+        {e.type.name}
+      </Badge>
+    </motion.div>
   );
 
   const PokemonAbilitiesBadge = (e: IPokemonAbilities, idx: number) => (
-    <Badge
-      size="sm"
-      mr={5}
+    <motion.div
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
       key={idx}
-      onClick={() => {
-        navigate(`/pokemon-ability-details/${extractIdFromUrl(e.ability.url)}`);
-      }}
+      style={{ display: "inline-flex" }}
     >
-      {e.ability.name}
-    </Badge>
+      <Badge
+        size="sm"
+        mr={5}
+        onClick={() => {
+          navigate(
+            `/pokemon-ability-details/${extractIdFromUrl(e.ability.url)}`
+          );
+        }}
+        style={{ cursor: "pointer" }}
+      >
+        {e.ability.name}
+      </Badge>
+    </motion.div>
   );
 
   return (

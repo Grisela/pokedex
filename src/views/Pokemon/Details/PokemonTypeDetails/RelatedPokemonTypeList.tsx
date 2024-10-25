@@ -14,6 +14,7 @@ import useSimpleLazyQuery from "@/hooks/query/useSimpleLazyQuery";
 import { ALL_POKEMON_LIST } from "@/graphql/queries/pokemon_v2_pokemon";
 import { useEffect } from "react";
 import useIsBottomScroll from "@/hooks/general/useIsBottomScroll";
+import { motion } from "framer-motion";
 
 interface IProps {
   state: IReducerInit<IPokemonTypeDetailsQuery>;
@@ -91,40 +92,50 @@ const RelatedPokemonTypeList = (props: IProps) => {
         {upperFirst(state.data?.name || "")} Type Pokemon (
         {state.data?.pokemon.length})
       </Title>
-      <Grid
-        mt={30}
-        type="container"
-        breakpoints={{
-          xs: "100px",
-          sm: "200px",
-          md: "300px",
-          lg: "600px",
-          xl: "800px",
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+          duration: 1,
+          delay: 1,
+          ease: "easeInOut",
         }}
       >
-        {isEmpty(statePokemonList.data) ? (
-          <Center h={"100vh"}>No Post Yet!</Center>
-        ) : (
-          statePokemonList.data?.map((e, idx: number) => {
-            return (
-              <Grid.Col
-                span={{ base: 12, md: 6, lg: 4, xl: 3 }}
-                key={idx}
-                onClick={() => navigate(`/pokemon-details/${e.name}`)}
-              >
-                <CardViewComponent
-                  name={e.name}
-                  sprite_img={
-                    e?.pokemon_v2_pokemonsprites[0].sprites.other[
-                      "official-artwork"
-                    ].front_default
-                  }
-                />
-              </Grid.Col>
-            );
-          })
-        )}
-      </Grid>
+        <Grid
+          mt={30}
+          type="container"
+          breakpoints={{
+            xs: "100px",
+            sm: "200px",
+            md: "300px",
+            lg: "600px",
+            xl: "800px",
+          }}
+        >
+          {isEmpty(statePokemonList.data) ? (
+            <Center h={"100vh"}>No Post Yet!</Center>
+          ) : (
+            statePokemonList.data?.map((e, idx: number) => {
+              return (
+                <Grid.Col
+                  span={{ base: 12, md: 6, lg: 4, xl: 3 }}
+                  key={idx}
+                  onClick={() => navigate(`/pokemon-details/${e.name}`)}
+                >
+                  <CardViewComponent
+                    name={e.name}
+                    sprite_img={
+                      e?.pokemon_v2_pokemonsprites[0].sprites.other[
+                        "official-artwork"
+                      ].front_default
+                    }
+                  />
+                </Grid.Col>
+              );
+            })
+          )}
+        </Grid>
+      </motion.div>
     </Box>
   );
 };

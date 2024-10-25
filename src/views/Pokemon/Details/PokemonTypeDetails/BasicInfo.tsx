@@ -4,6 +4,7 @@ import { Badge, Card, Grid, Text } from "@mantine/core";
 import { isEmpty } from "lodash";
 import { useNavigate } from "react-router-dom";
 import extractIdFromUrl from "@/utils/extractIdFromUrl";
+import { motion } from "framer-motion";
 
 interface IProps {
   state: IReducerInit<IPokemonTypeDetailsQuery>;
@@ -17,17 +18,25 @@ const BasicInfo = (props: IProps) => {
   const NoneComponent = <Text ml={3}>None</Text>;
 
   const PokemonTypeBadge = (e: IDamage, idx: number) => (
-    <Badge
-      m={3}
-      size="sm"
+    <motion.div
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
       key={idx}
-      onClick={() => {
-        navigate(`/pokemon-type-details/${extractIdFromUrl(e.url)}`);
-        dispatch({ isFetching: true });
-      }}
+      style={{ display: "inline-flex" }}
     >
-      {e.name}
-    </Badge>
+      <Badge
+        key={idx}
+        m={3}
+        size="sm"
+        onClick={() => {
+          navigate(`/pokemon-type-details/${extractIdFromUrl(e.url)}`);
+          dispatch({ isFetching: true });
+        }}
+        style={{ cursor: "pointer" }}
+      >
+        {e.name}
+      </Badge>
+    </motion.div>
   );
 
   return (
